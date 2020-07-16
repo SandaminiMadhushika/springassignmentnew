@@ -6,37 +6,40 @@ import java.util.Date;
 @Entity
 @IdClass(EmployeeId.class)
 public class Employee {
-    private String fName;
-    private String lName;
+    private String firstName;
+    private String lastName;
     private String age;
     private String gender;
     private String designation;
     private String address;
     private String email;
-    private String mobileNum;
+    private String mobileNumber;
     private int factionId;
     private int subId;
+    private String nic;
 
-    private Date lastDate;
+
+
+    private Date lastModifiedDate;
 
 @Id
     private int departmentId;
 
 
     public String getfName() {
-        return fName;
+        return firstName;
     }
 
     public void setfName(String fName) {
-        this.fName = fName;
+        this.firstName = firstName;
     }
 
     public String getlName() {
-        return lName;
+        return lastName;
     }
 
     public void setlName(String lName) {
-        this.lName = lName;
+        this.lastName = lastName;
     }
 
     public String getAge() {
@@ -80,11 +83,11 @@ public class Employee {
     }
 
     public String getMobileNum() {
-        return mobileNum;
+        return mobileNumber;
     }
 
-    public void setMobileNum(String mobileNum) {
-        this.mobileNum = mobileNum;
+    public void setMobileNum(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
     public int getFactionId() {
@@ -104,11 +107,11 @@ public class Employee {
     }
 
     public Date getLastDate() {
-        return lastDate;
+        return lastModifiedDate;
     }
 
-    public void setLastDate(Date lastDate) {
-        this.lastDate = lastDate;
+    public void setLastDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public int getDepartmentId() {
@@ -133,8 +136,15 @@ public class Employee {
         this.employee_id = employee_id;
     }
 
+    public String getNic() {
+        return nic;
+    }
 
-//    public Employee(){
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
+
+    //    public Employee(){
 //
 //    }
 
