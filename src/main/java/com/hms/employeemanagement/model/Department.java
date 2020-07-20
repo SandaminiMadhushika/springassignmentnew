@@ -1,13 +1,18 @@
 package com.hms.employeemanagement.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 @Entity
 public class Department {
     @Id
     private int departmentId;
-    private String dName;
+
+
+    @Enumerated(EnumType.STRING)
+    private Deptname dName;
 
 
     public int getDepartmentId() {
@@ -18,14 +23,12 @@ public class Department {
         this.departmentId = departmentId;
     }
 
-    public String getDepartmentName() {
+    public Deptname getdName() {
         return dName;
     }
 
-    public void setDepartmentName(String dName) {
+    public void setdName(Deptname dName) {
         this.dName = dName;
     }
-
-
 
 }
