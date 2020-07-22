@@ -84,7 +84,7 @@ public interface EmployeeRepository extends CrudRepository<Employee,Integer> {
     @Query(
             value = "DELETE FROM employee WHERE employee_id=:employeeId AND department_id=:departmentId",
             nativeQuery = true)
-    void deleteEmp(@Param("employeeId") int employeeId ,@Param("departmentId") int departmentId);
+    int deleteEmp(@Param("employeeId") int employeeId ,@Param("departmentId") int departmentId);
 
 
 }

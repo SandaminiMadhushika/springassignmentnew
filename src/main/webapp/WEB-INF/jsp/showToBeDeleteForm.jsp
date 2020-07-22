@@ -7,7 +7,7 @@
 </head>
 <body>
 <div align="center">
-    <h2>Edit Employee</h2>
+    <h2>Delete Employee</h2>
     <%--@elvariable id="employee" type="com.hms.employee.employeemanagement.model.Employee"--%>
     <form:form action="deleteFinish" method="post" modelAttribute="employee">
         <form:input type="text" name="firstName"

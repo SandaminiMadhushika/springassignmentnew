@@ -12,9 +12,10 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository repository;
 
-    public void createEmployee(Employee entity) {
+    public int createEmployee(Employee entity) {
         repository.save(entity);
         System.out.println(entity);
+        return 1;
     }
 
     public List<Employee> findall(){
@@ -37,8 +38,9 @@ public class EmployeeService {
         return employee2;
     }
 
-    public void deleteEmp(int employeeId,int departmentId){
-        repository.deleteEmp(employeeId,departmentId);
+    public int deleteEmp(int employeeId,int departmentId){
+        int delete=repository.deleteEmp(employeeId,departmentId);
+        return delete;
     }
 
 

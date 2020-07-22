@@ -30,7 +30,7 @@ public String showForm(ModelMap model) {
 
 @PostMapping("/register")
     public String submitForm(@ModelAttribute("employee") Employee employee ,BindingResult result, ModelMap model) {
-    erepository.createEmployee(employee);
+    int y=erepository.createEmployee(employee);
         return "redirect:start";
 
     }
@@ -80,7 +80,7 @@ public String showForm(ModelMap model) {
 
     @PostMapping("/deleteFinish")
     public String deleteEmp(@ModelAttribute("employee") Employee employee ,BindingResult result, ModelMap model) {
-     erepository.deleteEmp(employee.getEmployeeId(),employee.getDepartmentId());
+     int delete=erepository.deleteEmp(employee.getEmployeeId(),employee.getDepartmentId());
         return "redirect:start";
 
     }
