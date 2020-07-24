@@ -2,6 +2,8 @@ package com.hms.employeemanagement.controller;
 
 import com.hms.employeemanagement.model.Employee;
 import com.hms.employeemanagement.service.EmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,8 +14,10 @@ import java.util.List;
 
 @Controller
 public class EmployeeController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
-@Autowired
+
+    @Autowired
     EmployeeService erepository;
 
 @GetMapping("/start")
@@ -31,6 +35,7 @@ public String showForm(ModelMap model) {
 @PostMapping("/register")
     public String submitForm(@ModelAttribute("employee") Employee employee ,BindingResult result, ModelMap model) {
     int y=erepository.createEmployee(employee);
+    LOGGER.debug("call repo method from controller");
         return "redirect:start";
 
     }
@@ -38,6 +43,7 @@ public String showForm(ModelMap model) {
     @GetMapping("/edituser")
     public String showEmployeeList(ModelMap model) {
     List<Employee> emplist=erepository.findall();
+        LOGGER.debug("call repo method from controller");
         model.addAttribute("emplist", emplist);
         return "updateForm";
     }
@@ -60,6 +66,7 @@ public String showForm(ModelMap model) {
     @GetMapping("/deleteuser")
     public String showEmployeeDeleteList(ModelMap model) {
         List<Employee> empdeletelist=erepository.findall();
+        LOGGER.debug("call repo method from controller");
         model.addAttribute("empdeletelist", empdeletelist);
         return "deleteForm";
     }
@@ -72,6 +79,7 @@ public String showForm(ModelMap model) {
             return "showToBeDeleteForm";
 
         } catch (Exception e) {
+            LOGGER.error("viewEmployee error in fetching data");
             e.printStackTrace();
             return "error";
         }
@@ -81,6 +89,7 @@ public String showForm(ModelMap model) {
     @PostMapping("/deleteFinish")
     public String deleteEmp(@ModelAttribute("employee") Employee employee ,BindingResult result, ModelMap model) {
      int delete=erepository.deleteEmp(employee.getEmployeeId(),employee.getDepartmentId());
+        LOGGER.debug("call repo method from controller");
         return "redirect:start";
 
     }
@@ -94,10 +103,12 @@ public String showForm(ModelMap model) {
     public String showEmpByName(ModelMap model, @RequestParam("firstName") String firstName) {
         try {
             List<Employee> emp = erepository.viewEmployee(firstName);
+            LOGGER.debug("call repo method from controller");
             model.addAttribute("employee", emp);
             return "showByName";
 
         } catch (Exception e) {
+            LOGGER.error("viewEmployee error in fetching data");
             e.printStackTrace();
             return "error";
         }
@@ -113,6 +124,7 @@ public String showForm(ModelMap model) {
     public String showEmpByDepName(ModelMap model, @RequestParam("departmentName") String departmentName) {
         try {
             List<Employee> emp = erepository.findByDdname(departmentName);
+            LOGGER.debug("call repo method from controller");
             model.addAttribute("employee", emp);
             //System.out.println(emp);
             return "showByDname";

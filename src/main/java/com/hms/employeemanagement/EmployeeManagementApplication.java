@@ -1,5 +1,6 @@
 package com.hms.employeemanagement;
 
+import com.hms.employeemanagement.service.EmployeeService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,6 +17,8 @@ public class EmployeeManagementApplication {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(EmployeeManagementApplication.class, args);
+		EmployeeService es=new EmployeeService();
+		es.doStuff("my first warn");
 	}
 
 }
